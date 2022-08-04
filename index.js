@@ -70,9 +70,9 @@ const solve = (x) => {
       let char = x;
       IsAlpha = !0;
       let text = x.toString().replace('-', '–');
-      console.log('---> ' + text.indexOf('–') > 0);
+      //console.log('---> ' + text.indexOf('–') > 0);
       if (text.indexOf('–') > 0) {
-        console.log('---> ' + text);
+        //console.log('---> ' + text);
         let split = text.split('–');
         let char_1 = split[0],
           char_2 = split[1];
@@ -125,7 +125,9 @@ document.getElementById('tnput').addEventListener('input', function () {
   //console.log(filter);
   setTimeout(
     function (_) {
-      let filter = _.value.split(/[\s , and]+/);
+      let filter = _.value
+        .replace(/\B(?=(.{1})+(?!.))/g, ',')
+        .split(/[\s , and]+/);
       let new_val = solve(filter);
       document.getElementById('tnput1').value = new_val;
     },
@@ -140,3 +142,5 @@ let val = 'A, B ,  and D'.split(/[\s , and]+/);
 
 let expand = [65, 67].join('–').expandNumbers();
 //console.log(expand);
+
+console.log('1-23abc'.replace(/\B(?=(.{1})+(?!.))/g, ','));
