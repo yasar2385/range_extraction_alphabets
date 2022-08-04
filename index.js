@@ -127,8 +127,15 @@ document.getElementById('tnput').addEventListener('input', function () {
     function (_) {
       let filter = _.value
         .replace(/\B(?=(.{1})+(?!.))/g, ',')
-        .split(/[\s , and]+/);
+        .split(/[\s , and]+/)
+        .filter((c, index, arr) => {
+          return arr.indexOf(c) === index;
+        })
+        .filter(Boolean);
+      //console.log(filter)
+      filter = [...new Set(filter)];
       let new_val = solve(filter);
+      //console.log(new_val)
       document.getElementById('tnput1').value = new_val;
     },
     1000,
