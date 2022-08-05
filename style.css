@@ -1,3 +1,10 @@
 h1, h2 {
   font-family: Lato;
 }
+
+.comma{
+  background-color: aqua;
+}
+.and{
+  background-color: brown;
+}

@@ -119,7 +119,7 @@ const x = [
 
 const y = ['A', 'B', 'C', 'E', 'G'];
 //console.log(solve(y));
-
+let fina_a = document.querySelector('a');
 document.getElementById('tnput').addEventListener('input', function () {
   //console.log(this.id, this.value);
   //console.log(filter);
@@ -136,7 +136,8 @@ document.getElementById('tnput').addEventListener('input', function () {
       filter = [...new Set(filter)];
       let new_val = solve(filter);
       //console.log(new_val)
-      document.getElementById('tnput1').value = new_val;
+
+      fina_a.textContent = fina_a.textContent + new_val;
     },
     1000,
     this
@@ -151,3 +152,21 @@ let expand = [65, 67].join('–').expandNumbers();
 //console.log(expand);
 
 console.log('1-23abc'.replace(/\B(?=(.{1})+(?!.))/g, ','));
+
+let txt = fina_a.textContent;
+let dom = document.getElementById('demo');
+dom.append(fina_a.cloneNode(true));
+let a = dom.querySelector('a');
+let inner_html = a.innerHTML;
+console.log(inner_html);
+if (inner_html.indexOf(', ')) {
+  inner_html = inner_html.split(', ').join('</a>, <a class="comma">');
+}
+if (inner_html.indexOf(' and ')) {
+  inner_html = inner_html.split(' and ').join('</a> and <a class="and">');
+}
+console.log(inner_html);
+inner_html = '<a>' + inner_html + '</a>';
+console.log(inner_html);
+dom.innerHTML = inner_html;
+console.log(dom.innerHTML);
