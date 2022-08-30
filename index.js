@@ -59,7 +59,8 @@ Array.prototype.join2 = function (all, last) {
 };
 
 var FromCharCode = function (char) {
-  //console.log(char);
+  console.log(char);
+
   return String.fromCharCode(parseInt(char));
 };
 
@@ -121,18 +122,19 @@ const y = ['A', 'B', 'C', 'E', 'G'];
 //console.log(solve(y));
 let fina_a = document.querySelector('a');
 document.getElementById('tnput').addEventListener('input', function () {
-  //console.log(this.id, this.value);
+  console.log(this.value);
   //console.log(filter);
   setTimeout(
     function (_) {
       let filter = _.value
+        .replace(/and|\s+/g, '')
         .replace(/\B(?=(.{1})+(?!.))/g, ',')
-        .split(/[\s , and]+/)
+        .split(/and|\s|,/)
         .filter((c, index, arr) => {
           return arr.indexOf(c) === index;
         })
         .filter(Boolean);
-      //console.log(filter)
+      console.log(filter);
       filter = [...new Set(filter)];
       let new_val = solve(filter);
       //console.log(new_val)
